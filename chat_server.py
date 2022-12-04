@@ -11,15 +11,27 @@
 #
 # ----------------------------------------------------------------------------
 
-# Create socket
+import socket
+
+HOST = "localhost"
+PORT = 17777
+QUIT_MSG = "/q"
+
+# Create socket and set options
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 # Bind to localhost and port xxxx
+server.bind((socket.gethostbyname(HOST), PORT))
 
 # Listen for a connection
+server.listen(1)
+conn, addr = server.accept()
 
 # While connected
-
+    
     # Server calls recv to receive data
+
 
     # Server prints data, then prompts for a reply
 
@@ -28,3 +40,4 @@
     # Else, server sends the reply
 
 # Close sockets
+socket.close()
