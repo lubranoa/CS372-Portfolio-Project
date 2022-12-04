@@ -11,9 +11,17 @@
 #
 # ----------------------------------------------------------------------------
 
+import socket
+
+HOST = socket.gethostbyname("localhost")
+PORT = 17777
+QUIT_MSG = "/q"
+
 # Create socket
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Connect to localhost and port xxxx
+
 
 # While connected:
 
@@ -28,3 +36,4 @@
     # Print data
 
 # Close sockets
+s.close()
