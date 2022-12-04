@@ -13,7 +13,8 @@
 
 import socket
 
-HOST = "localhost"
+HOSTNAME = "localhost"
+HOST = socket.gethostbyname(HOSTNAME)
 PORT = 17777
 QUIT_MSG = "/q"
 
@@ -22,16 +23,19 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 # Bind to localhost and port xxxx
-server.bind((socket.gethostbyname(HOST), PORT))
+server.bind((HOST, PORT))
 
 # Listen for a connection
 server.listen(1)
+print(f"Server listening on: {HOSTNAME} on port: {PORT}")
+
 conn, addr = server.accept()
+print(f"Connected by {addr}")
+print("Waiting for message...")
 
 # While connected
     
     # Server calls recv to receive data
-
 
     # Server prints data, then prompts for a reply
 
